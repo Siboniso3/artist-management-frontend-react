@@ -1,0 +1,25 @@
+.artist_box {
+    width: 320px;
+    overflow: hidden;
+    max-height: 470px;
+    padding: 10px;
+    margin: 10px 5px auto;
+    background-color: #fff;
+    float: left;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.artist_box img {
+    width: 100%;
+    height: 235px;
+    object-fit: cover;
+
+}
+
+.artist_details {
+    margin-top: 10px;
+}
+
+.artist_details h2 {
+    font-size: 28px;
+}
