@@ -5,14 +5,9 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Toaster from "../forms/Toastr/toastr";
 
 const LogIn = () => {
-
-    const [formData, setFormData] = useState({
-        username: "",
-        password: ""
-    })
-
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -20,27 +15,46 @@ const LogIn = () => {
             [name]: value
         })
     }
+
+    const [showError, setShowError] = useState(false);
+    const [formData, setFormData] = useState([]);
+
+    const getError = (err) => {
+        // showError = err;
+        console.log('err is ' + err);
+        setShowError(err);
+        console.log('err2 is ' + showError);
+        return setShowError;
+    };
     const navigate = useNavigate();
-    const USER_API_BASE_URL = "http://localhost:8080/v1/api/user";
+    // const USER_API_BASE_URL = "http://localhost:8080/v1/api/user";
     const handleSubmit = async (e) => {
         e.preventDefault();
+        getError(false);
         console.log(formData);
         try {
             console.log("Here one");
-            axios.post(USER_API_BASE_URL, {
-                username: formData.username,
-                password: formData.password,
-            }).then((response) => {
-                console.log("Log in successfully:", response.data)
+            // axios.post(USER_API_BASE_URL, {
+            //     username: formData.username,
+            //     password: formData.password,
+            // }).then((response) => {
+            //     console.log("Log in successfully:", response.data)
 
-            });
+            // });
 
             console.log("Here two");
+
             if (formData.username == 'sbo' && formData.password == 'sbo') {
-                navigate("/home");
+                // isError = false;
+                navigate("/");
+                getError(false);
+
             } else {
-                navigate("/login");
+                // isError = true;
+                getError(true);
+                // navigate("/login");
             }
+
 
         } catch (error) {
             console.error("Error creating artist:", error.message);
@@ -49,11 +63,13 @@ const LogIn = () => {
     }
 
     return (
+        console.log('error ' + showError),
         <>
 
             <div className="center-form">
                 <h1>Log In</h1>
                 <Form onSubmit={handleSubmit}>
+                    {showError ? < Toaster /> : null}
                     <br />
                     <br />
                     <Form.Group controlId="formBasicName">
