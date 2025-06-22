@@ -1,16 +1,15 @@
-
 import axios from 'axios';
-import DashboardCard from './DashboardCard'
 import { useState } from 'react';
 
 
-function Dashboard() {
+
+function Users() {
 
 
 
     const [formData, setFormData] = useState([])
     const getData = () => {
-        axios.get('http://localhost:8080/v1/api/artist')
+        axios.get('http://localhost:8080/v1/api/user')
             .then(res => {
                 console.log(res)
                 setFormData(res.data)
@@ -29,27 +28,23 @@ function Dashboard() {
             <div class="container">
                 <br />
                 <br />
-                <h2 class="text-left">Artist list</h2>
+                <h2 class="text-left">User list</h2>
                 <br />
                 <br />
                 <table class="table table-striped">
                     <thead>
-                        <th>Artist First Name</th>
-                        <th>Artist Last Name</th>
-                        <th>Stage Name</th>
-                        <th>Genre</th>
-                        <th>Location</th>
-                        <th>Status</th>
+                        <th>First Name</th>
+                        <th>Middle Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
                     </thead>
                     <tbody>
-                        {formData.map((artist) => (
-                            <tr key={artist.id}>
-                                <td>{artist.fName}</td>
-                                <td>{artist.lName}</td>
-                                <td>{artist.stageName}</td>
-                                <td>{artist.genre}</td>
-                                <td>{artist.location}</td>
-                                <td>{artist.status}</td>
+                        {formData.map((user) => (
+                            <tr key={user.id}>
+                                <td>{user.fName}</td>
+                                <td>{user.mName}</td>
+                                <td>{user.lName}</td>
+                                <td>{user.email}</td>
                             </tr>
                         ))}
                     </tbody>
@@ -69,4 +64,4 @@ function Dashboard() {
     );
 }
 
-export default Dashboard;
+export default Users;

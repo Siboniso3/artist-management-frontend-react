@@ -40,11 +40,23 @@ const Header = () => {
                         </Nav.Link>
                     </Navbar.Brand>
                     <Navbar className="ml-auto">
+                        <Nav.Link as={Link} to="/home" className="nav-link">
+                            Home
+                        </Nav.Link>
                         <Nav.Link as={Link} to="/" className="nav-link">
                             Artists
                         </Nav.Link>
+                        <Nav.Link as={Link} to="/users" className="nav-link">
+                            Users
+                        </Nav.Link>
+                        <Nav.Link as={Link} to="/bookings" className="nav-link">
+                            Bookings
+                        </Nav.Link>
                         <Nav.Link as={Link} to="/artist" className="nav-link">
                             Create Artist
+                        </Nav.Link>
+                        <Nav.Link as={Link} to="/user" className="nav-link">
+                            Create User
                         </Nav.Link>
                         {/* <Nav.Link as={Link} to="/user" className="nav-link">
                             User

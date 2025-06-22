@@ -46,7 +46,7 @@ const AddUser = () => {
 
             console.log("Here two");
 
-            navigate("/");
+            navigate("/users");
         } catch (error) {
             console.error("Error creating artist:", error.message);
         };
