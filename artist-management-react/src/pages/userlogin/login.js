@@ -31,12 +31,17 @@ const LogIn = () => {
                 username: formData.username,
                 password: formData.password,
             }).then((response) => {
-                console.log("Artist created successfully:", response.data)
+                console.log("Log in successfully:", response.data)
 
             });
 
             console.log("Here two");
-            navigate("/");
+            if (formData.username == 'sbo' && formData.password == 'sbo') {
+                navigate("/home");
+            } else {
+                navigate("/login");
+            }
+
         } catch (error) {
             console.error("Error creating artist:", error.message);
         };
@@ -53,10 +58,10 @@ const LogIn = () => {
                     <br />
                     <Form.Group controlId="formBasicName">
                         <Form.Control
-                            type="email"
-                            name="email"
-                            placeholder="Enter Email"
-                            value={formData.email}
+                            type="text"
+                            name="username"
+                            placeholder="Enter Username"
+                            value={formData.username}
                             onChange={handleInputChange}
                         />
                     </Form.Group>
